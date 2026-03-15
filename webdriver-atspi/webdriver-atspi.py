@@ -1,0 +1,32 @@
+import info
+
+
+class subinfo(info.infoclass):
+    def setTargets(self):
+        self.svnTargets["master"] = "https://invent.kde.org/sdk/selenium-webdriver-at-spi.git|master"
+        self.defaultTarget = "master"
+
+        self.description = "Webdriver for AT-SPI"
+        self.displayName = "AT-SPI Webdriver"
+        self.webpage = "https://invent.kde.org/sdk/selenium-webdriver-at-spi"
+
+    def setDependencies(self):
+        self.buildDependencies["dev-utils/cmake"] = None
+        self.buildDependencies["kde/frameworks/extra-cmake-modules"] = None
+
+        self.runtimeDependencies["kde/tier1/kcoreaddons"] = None
+        self.runtimeDependencies["kde/tier1/kwindowsystem"] = None
+        self.runtimeDependencies["libs/qt/qtbase"] = None
+        self.runtimeDependencies["libs/qt/qttranslations"] = None
+        self.runtimeDependencies["libs/qt/qtsvg"] = None
+        self.runtimeDependencies["libs/qt/qtimageformats"] = None
+        self.runtimeDependencies["libs/qt/qtdeclarative"] = None
+        self.runtimeDependencies["libs/qt/qtwayland"] = None
+
+
+from Package.CMakePackageBase import *
+
+
+class Package(CMakePackageBase):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
