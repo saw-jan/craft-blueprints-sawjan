@@ -16,9 +16,12 @@ class subinfo(info.infoclass):
 
         self.runtimeDependencies["kde/frameworks/tier1/kcoreaddons"] = None
         self.runtimeDependencies["kde/frameworks/tier1/kwindowsystem"] = None
-        # self.runtimeDependencies["kde/libs/plasma-wayland-protocols"] = None
         self.runtimeDependencies["kde/plasma/kwayland"] = None
-        self.runtimeDependencies["libs/qt/qtbase"] = None
+        self.runtimeDependencies["libs/qt/qtbase"] = {
+            "withDBus": True,
+            "withGlib": True,
+            "featureArguments": "-DQT_FEATURE_accessibility=ON -DQT_FEATURE_accessibility_atspi_bridge=ON",
+        }
         self.runtimeDependencies["libs/qt/qtdeclarative"] = None
         self.runtimeDependencies["libs/qt/qtwayland"] = None
 
